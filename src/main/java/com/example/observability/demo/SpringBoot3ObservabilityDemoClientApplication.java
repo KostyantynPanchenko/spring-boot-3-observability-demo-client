@@ -41,7 +41,7 @@ public class SpringBoot3ObservabilityDemoClientApplication {
           // The following lambda will be executed with an observation scope (e.g. all the MDC entries will be populated with tracing information). Also, the observation will be started, stopped and if an error occurred it will be recorded on the observation
           .observe(() -> {
             log.info("Will send a request to the server"); // Since we're in an observation scope - this log line will contain tracing MDC entries ...
-            String response = restTemplate.getForObject("http://localhost:8081/albums/{albumId}", String.class, albumId); // Boot's RestTemplate instrumentation creates a child span here
+            String response = restTemplate.getForObject("http://localhost:7654/albums/{albumId}", String.class, albumId); // Boot's RestTemplate instrumentation creates a child span here
             log.info("Got response [{}]", response); // ... so will this line
           });
 
